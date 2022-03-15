@@ -1,0 +1,10 @@
+[{"item_id":"1","foodName":"Spicy Ramen", "foodPrice":550},
+{"item_id":"2","foodName":"Naga Blast Burger", "foodPrice":950}, 
+{"item_id":"3","foodName":"Creamy Cheese Pasta", "foodPrice":450},
+{"item_id":"4","foodName":"Fuchka Platter", "foodPrice":220},
+{"item_id":"5","foodName":"Tikka", "foodPrice":450},
+{"item_id":"6","foodName":"Sea Food Soup", "foodPrice":450},
+{"item_id":"7","foodName":"Chiken Momos", "foodPrice":450},
+{"item_id":"8","foodName":"Shorma", "foodPrice":150},
+{"item_id":"9","foodName":"Chap", "foodPrice":120},
+{"item_id":"10","foodName":"Drinks", "foodPrice":70}]
