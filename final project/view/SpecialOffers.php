@@ -16,7 +16,7 @@
 	<?php
 		include "../view/include/header.php";  
 	?>
-	<h1>Special Offers</h1>
+	<h2>Special Offers</h2>
  
 <?php 
 
@@ -29,7 +29,7 @@
 			echo "No record(s) found";
 		}
 		else {
-			echo "<table border='1'>";
+			echo "<table border='1' class = 'form1'>";
 			echo "<thead>";
 			echo "<tr>";
 			echo "<th>Food Photo</th>";

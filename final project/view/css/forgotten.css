@@ -1,0 +1,17 @@
+fieldset {
+	background-color: rgba(197, 239, 247, .5);
+	color: black;
+}
+body {
+	background-image: url(../images/regBackground.jpg);
+	background-size: 100%;
+}
+h3 {
+	color: red;
+}
+h4 {
+	color: green;
+}
+span {
+	color: red;
+}

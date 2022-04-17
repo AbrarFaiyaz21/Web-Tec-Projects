@@ -10,6 +10,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>E-RESTAURANT</title>
+	<link rel="stylesheet" type="text/css" href="css/homepage.css">
 </head>
 <body>
 <?php 

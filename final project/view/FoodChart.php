@@ -10,27 +10,29 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Food Chart</title>
+	<script src="js/foodChartOrder.js"></script>
 </head>
 <body>
 	<?php
 			include "../view/include/header.php";  
 	?>
 
-	<form action="../controller/FoodChartAction.php" method="post" novalidate>
-		<h1>Food Chart</h1>
+	<form action="../controller/FoodChartAction.php" method="post" onsubmit="validation(this); return false;" novalidate>
+		<h2>Food Chart</h2>
 		<?php 
 
 			include "../model/userModel.php";
 
+			$userid = $_SESSION['id'];
 			$totalPrice = 0;
 			$flag = false;
-			$arr1 = checkFoodChart(); 
+			$arr1 = checkFoodChart($userid); 
 
 				if ($arr1 === NULL) {
 					echo "No Data(s) Found";
 				}
 				else{
-					echo "<table border='1'>";
+					echo "<table border='1' class = 'form1'>";
 					echo "<thead>";
 					echo "<tr>";
 					echo "<th>Food Name</th>";
@@ -61,9 +63,17 @@
 				}
 			if ($flag === true) {
 				echo "<br><br>";
-				echo "<h3>Add delevery/billing address</h3>";
 
-				echo '<table width="700px" class="form">';
+				echo '<table width="300px" class="form2">';
+
+				echo '<tr height="40px">';
+
+                    echo '<td width="120px" style="text-align:center" colspan="3">';
+                        echo '<h4>Add delevery/billing address</h4>';
+                    echo '</td>';
+                echo '</tr>';
+
+                ////////////////////////////////////
 
 				echo '<tr height="40px">';
 
@@ -72,6 +82,7 @@
                     echo '</td>';
                     echo '<td>';
                         echo '<input type = "text" name = "address" id = "address">';
+                        echo '<span id="err1"></span>';
                     echo '</td>';
                 echo '</tr>';
 
@@ -84,6 +95,7 @@
                     echo '</td>';
                     echo '<td>';
                         echo '<input type = "text" name = "poBox" id = "poBox">';
+                        echo '<span id="err2"></span>';
                     echo '</td>';
                 echo '</tr>';
 
@@ -95,18 +107,30 @@
                         echo '<label for = "phone">Phone No*: </label>';
                     echo '</td>';
                     echo '<td>';
-                        echo '<input type="tel" name="phone" id="phone" placeholder="01XXX-XXXXXX" pattern="{0}{1}[0-9]{3}-[0-9]{6}">';
+                        echo '<input type="tel" name="phone" id="phone" placeholder="01XXXXXXXXX" pattern="{0}{1}[0-9]{3}[0-9]{6}">';
+                        echo '<span id="err3"></span>';
                     echo '</td>';
                 echo '</tr>';
 
+                echo '<tr height="40px">';
+
+                    echo '<td width="120px">';
+                        echo '<input type="submit" name="Order" value="Order">';
+                    echo '</td>';
+                echo '</tr>';
+
+                ///////////////////////////////////////
+
                 echo '</table>';
 
-				echo '<input type="submit" name="Order" value="Order">';
+				
 			}
 
 		?>
 		
 	</form>
+
+	<p id="msg"></p>
 
 	<?php 
 		echo "<br><br>";

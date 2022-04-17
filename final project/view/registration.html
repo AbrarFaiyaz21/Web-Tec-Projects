@@ -4,116 +4,160 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="css/reglogin.css">
+    <script src="js/registration.js"></script>
 </head>
 <body>
-	<form name="form1" id="form1" action="../controller/RegistrationAction.php" method="post" novalidate>
-		<fieldset>
-			<legend><h2>Regisration Form</h2></legend>
+    <div class="main">
+        <div class="form">
+	<form name="form1" id="form1" action="../controller/RegistrationAction.php" method="post" onsubmit="return validation(this)" novalidate>
+		<!--<fieldset>-->
+			<h2>Regisration Form</h2>
 
 			<table>
 
 				<tr height="40px">
-                    <td width="150px">
+                    <td width="100px">
                         <label for="fName">First Name*:</label>
                     </td>
-                    <td>
+                    <td height="40px">
                         <input type="text" name="fName" id="fName" autofocus>
+                        <span id="err1"></span>
+                        <br><br>
+
                     </td>
                 </tr>
 
                 <tr height="40px">
 
-                    <td width="150px">
+                    <td width="100px">
                         <label for="lName">Last Name*:</label>
                     </td>
                     <td>
                         <input type="text" name="lName" id="lName">
+                        <span id="err2"></span>
+                        <br><br>
                     </td>
                 </tr>
 
                 <tr height="40px">
 
-                    <td width="150px">
+                    <td width="100px">
                         <label>Gender*:</label>
                     </td>
                     <td>
                         <input type="radio" name="gender" value="male" id="	male"><label for="male">Male</label>
 
 						<input type="radio" name="gender" value="female" id="female"><label for="female">Female</label>
+
+                        <span id="err3"></span>
+                        <br><br>
                     </td>
                 </tr>
 
                 <tr height="40px">
 
-                    <td width="150px">
+                    <td width="100px">
                         <label for="dob">Date of Birth*:</label>
                     </td>
                     <td>
                         <input type="Date" name="dob" id="dob">
+                        <span id="err4"></span>
+                        <br><br>
                     </td>
                 </tr>
 
                 <tr height="40px">
 
-                    <td width="150px">
+                    <td width="100px">
                         <label for="phone">Phone:</label>
                     </td>
                     <td>
-                        <input type="tel" name="phone" id="phone" placeholder="01XXX-XXXXXX" pattern="{0}{1}[0-9]{3}-[0-9]{6}">
+                        <input type="tel" name="phone" id="phone" placeholder="01XXXXXXXXX" pattern="{0}{1}[0-9]{3}[0-9]{6}">
+                        <span id="err5"></span>
+                        <br><br>
                     </td>
                 </tr>
 
 				<tr height="40px">
 
-                    <td width="150px">
+                    <td width="100px">
                         <label for="email">Email*:</label>
                     </td>
                     <td>
                         <input type="email" name="email" id="email">
+                        <span id="err6"></span>
+                        <br><br>
                     </td>
                 </tr>
 
                 <tr height="40px">
 
-                    <td width="150px">
+                    <td width="100px">
                         <label for="uName">User Name*:</label>
                     </td>
                     <td>
                         <input type="text" name="uName" id="uName" maxlength="10">
+                        <span id="err7"></span>
+                        <br><br>
                     </td>
                 </tr>
 
                 <tr height="40px">
 
-                    <td width="150px">
+                    <td width="100px">
                         <label for="pass">Password*:</label>
                     </td>
                     <td>
                         <input type="Password" name="pass" id="pass">
+                        <span id="err8"></span>
+                        <br><br>
                     </td>
                 </tr>
 
                 <tr height="40px">
 
-                    <td width="150px">
+                    <td width="100px">
                         <label for="confirmPass">Confirm Password*:</label>
                     </td>
                     <td>
                         <input type="Password" name="confirmPass" id="confirmPass">
+                        <span id="err9"></span>
+                        <br><br>
                     </td>
+                </tr>
+
+                <tr height="40px">
+
+                    <td width="100px">
+                        <input type="submit" name="submit" id="submit">
+                    </td>
+                    
+                </tr>
+
+                <tr height="40px">
+
+                    <td width="200px">
+                        <label>Already have an account?
+                    </td>
+                    <td width="200px">
+                        </label><a href="../view/login.php" class="link">Login</a>
+                    </td>
+                    
                 </tr>
 
             </table>
 
-			<input type="submit" name="submit" id="submit">
-
-			<br><br>
-
-			<label>Already have an account?</label><a href="../view/login.php">Login</a>
+			
 
 
-		</fieldset>
+		<!--</fieldset>-->
 		
 	</form>
+    </div><!--end of register-->
+    </div><!--end of main-->
+
+    <p id="msg"></p>
+
 </body>
 </html>

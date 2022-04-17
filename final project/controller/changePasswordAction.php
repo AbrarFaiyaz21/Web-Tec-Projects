@@ -7,6 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Change Password Action</title>
+	<link rel="stylesheet" type="text/css" href="../view/css/homepage.css">
 </head>
 <body>
 <?php 
@@ -28,37 +29,24 @@
 		$newPassword = test($_POST['newPass']);
 		$confirmPassword = test($_POST['confirmPass']);
 
-		//var_dump($_SESSION['password']);
-
 		if (empty($currentPassword) or empty($newPassword) or empty($confirmPassword)) {
-			echo "<h2>Please fill up the form properly</h2>";
-			echo '<a href = "../view/changePassword.php">Go Back</a>';
+			echo "<h3>Please fill up the form properly</h3>";
 		}
 		else{
 			if($currentPassword === $_SESSION['password']){
 				if($newPassword === $confirmPassword){
 					$_SESSION['password'] = $newPassword;
 					changePassword($id);
-					echo "<h3>Password changed successfully</h3>";
-					echo '<a href = "../view/welcomePage.php">Home Page</a>';
+					echo "<h4>Password changed successfully</h4>";
 				}
 				else{
-					echo "Error: Password and confirm password didn't match";
-					echo "<br><br>";
-					echo '<a href = "../view/changePassword.php">Go Back</a>';
+					echo "<h3>Error: Password and confirm password didn't match</h3>";
 				}
 					
 			}
 			else if ($currentPassword !== $_SESSION['password']) {
-				echo "Error: Incorrect current password";
-				echo "<br><br>";
-				echo '<a href = "../view/changePassword.php">Go Back</a>';
+				echo "<h3>Error: Incorrect current password</h3>";
 			}
-			/*else if($newPassword !== $confirmPassword) {
-				echo "Error: Password and confirm password didn't match";
-				echo "<br><br>";
-				echo '<a href = "../view/changePassword.php">Go Back</a>';
-			}*/
 		}
 	}
 ?>

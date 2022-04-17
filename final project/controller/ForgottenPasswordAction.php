@@ -7,6 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Forgotten Password Action</title>
+	<link rel="stylesheet" type="text/css" href="../view/css/forgotten.css">
 </head>
 <body>
 <?php 
@@ -25,7 +26,7 @@
 		$email = test($_POST['email']);
 
 		if (empty($email)) {
-			echo "<h2>Please fill up the form properly</h2>";
+			echo "<h3>Please fill up the form properly</h3>";
 			echo '<a href = "../view/ForgottenPassword.php">Go Back</a>';
 		}
 		else{
@@ -35,7 +36,7 @@
 				header("LOCATION: ../view/VerificationCode.php");
 			}
 			else{
-				echo "Error: There is no account of this email.";
+				echo "<h3>Error: There is no account of this email.</h3>";
 					echo "<br><br>";
 					echo '<a href = "../view/ForgottenPassword.php">Try again</a>';
 				}

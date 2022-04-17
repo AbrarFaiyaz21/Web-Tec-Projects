@@ -1,0 +1,38 @@
+
+body {
+	background-image: url(../images/regBackground.jpg);
+	background-size: 100%;
+	background-color: lightblue;
+	color: white;
+}
+h1,h2 {
+	text-align: center;
+	color: orange;
+}
+h3 {
+	color: red;
+}
+h4 {
+	color: green;
+}
+b {
+	color: blue;
+}
+span {
+	color: red;
+}
+table.form1 {
+	margin: auto;
+	border: 5px solid rgba(255,255,255,0.3);
+	box-shadow: 1px 1px 4px;
+	background-color: brown;
+	color: white;
+}
+table.form2 {
+	margin: auto;
+	border: 5px solid rgba(255,255,255,0.3);
+	box-shadow: 1px 1px 7px;
+	background-color: rgba(197, 239, 247, .5);
+	color: black;
+}
+

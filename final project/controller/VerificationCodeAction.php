@@ -7,6 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Verification Code Action</title>
+	<link rel="stylesheet" type="text/css" href="../view/css/forgotten.css">
 </head>
 <body>
 <?php
@@ -26,7 +27,7 @@
 		
 
 		if (empty($code)) {
-			echo "<h2>Please fill up the form properly</h2>";
+			echo "<h3>Please fill up the form properly</h3>";
 			echo '<a href = "../view/VerificationCode.php">Go Back</a>';
 		}
 		else{
@@ -36,7 +37,7 @@
 				header('Location: ../view/FchangePassword.php');
 			}
 			else{
-				echo "<h3>worng code</h2>";
+				echo "<h3>worng code</h3>";
 				echo '<a href = "../view/VerificationCode.php">Go Back</a>';
 			}
 

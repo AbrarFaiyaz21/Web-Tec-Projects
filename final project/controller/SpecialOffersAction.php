@@ -1,9 +1,13 @@
+<?php 
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Food Menu Action</title>
+	<link rel="stylesheet" type="text/css" href="../view/css/homepage.css">
 </head>
 <body>
 <?php 
@@ -11,6 +15,7 @@
 	include "../model/userModel.php";
 
 		$item_id = $foodName1 = $foodName2 = $foodName3 = $foodPrice = "";
+		$userid = $_SESSION['id'];
 
 		if (isset($_GET['id'])) {		
 			$special_item_id = $_GET['id'];
@@ -48,7 +53,7 @@
 			$foodName = $foodName1."+".$foodName2."+".$foodName3;
 			$foodPrice = (int)(($foodPrice1)+($foodPrice2)+($foodPrice3)-(((($foodPrice1)+($foodPrice2)+($foodPrice3))*5)/100));
 
-			insertFoodChart($foodName, $foodPrice);
+			insertFoodChart($foodName, $foodPrice, $userid);
 
 			header("LOCATION: ../view/FoodChart.php");
 		}

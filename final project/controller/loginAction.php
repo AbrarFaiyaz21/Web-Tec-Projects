@@ -7,6 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login Action</title>
+	<link rel="stylesheet" type="text/css" href="../view/css/homepage.css">
 </head>
 <body>
 <?php
@@ -34,7 +35,7 @@
 		}
 
 		if (empty($username) or empty($pass)) {
-			echo "<h2>Please fill up the form properly</h2>";
+			echo "<h3>Please fill up the form properly</h3>";
 			echo '<a href = "../view/login.php">Go Back</a>';
 		}
 		else{

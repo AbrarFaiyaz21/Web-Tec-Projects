@@ -19,11 +19,12 @@
 
 	include "../model/userModel.php";
 
+	$userid = $_SESSION['id'];
 	$count = 0;
 	$id_no = 0;
 		if (isset($_GET['id'])) {		
 			$item_id = $_GET['id'];
-			$arr1 = checkFoodChart();
+			$arr1 = checkFoodChart($userid);
 
 			var_dump($arr1);
 

@@ -16,18 +16,12 @@
 		$email = $_POST['email'];
 		$username = $_POST['uName'];
 		$pass = $_POST['pass'];
-		$stmt->execute();
+		$res = $stmt->execute();
 
-		if ($stmt) {
-			$stmt->close();
-			$conn->close();
-			return true;
-		}
-		else{
-			$stmt->close();
-			$conn->close();
-			return false;
-		}
+		$stmt->close();
+		$conn->close();
+		return $res;
+		
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,19 +95,13 @@
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	function verification($email,$code){
-		$verificationCode = 0;
-		$verificationEmail = "";
-
 		$conn = getConnection();
 		$stmt = $conn->prepare("SELECT * FROM verification WHERE email = ? AND code = ?");
 		$stmt->bind_param("ss",$email,$code);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		while ($row = $result->fetch_assoc()) {
-			$verificationCode = $row['code'];
-			$verificationEmail = $row['email'];
-		}
-		if ($code === $verificationCode and $email === $verificationEmail) {
+
+		if ($result->num_rows > 0) {
 			$stmt->close();
 			$conn->close();
 			return true;
@@ -132,17 +120,12 @@
 		$stmt = $conn->prepare("UPDATE registration SET password=? WHERE Id=?");
 		$stmt->bind_param("si",$pass,$id);
 		$pass = $_POST['newPass'];
-		$stmt->execute();
-		if ($stmt) {
-			$stmt->close();
-			$conn->close();
-			return true;
-		}
-		else{
-			$stmt->close();
-			$conn->close();
-			return false;
-		}
+		$res = $stmt->execute();
+
+		$stmt->close();
+		$conn->close();
+		return $res;
+		
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -159,25 +142,18 @@
    		 	$data = array('id' => $row['Id'], 'food_name' => $row['food_name'], 'food_price' => $row['food_price']);
 			$arr[] = $data;
 		}
-		//var_dump($arr);
-		if ($result->num_rows > 0) {
-			$stmt->close();
-			$conn->close();
-			return $arr;
-		}
-		else{
-			$stmt->close();
-			$conn->close();
-			return $arr;
-		}
+
+		$stmt->close();
+		$conn->close();
+		return $arr;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	function insertFoodChart($foodName, $foodPrice){
+	function insertFoodChart($foodName, $foodPrice,$userid){
 		$conn = getConnection();
-		$stmt = $conn->prepare("INSERT INTO foodchart (food_name, food_price) VALUES (?, ?)");
-		$stmt->bind_param("si", $foodName, $foodPrice);
+		$stmt = $conn->prepare("INSERT INTO foodchart (food_name, food_price, user_id) VALUES (?, ?, ?)");
+		$stmt->bind_param("sii", $foodName, $foodPrice, $userid);
 
 		$stmt->execute();
 
@@ -186,9 +162,10 @@
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	function checkFoodChart(){
+	function checkFoodChart($userid){
 		$conn = getConnection();
-		$stmt = $conn->prepare("SELECT * FROM foodchart");
+		$stmt = $conn->prepare("SELECT * FROM foodchart WHERE user_id = ?");
+		$stmt->bind_param("i",$userid);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
@@ -198,17 +175,11 @@
    		 	$data = array('id' => $row['Id'], 'food_name' => $row['food_name'], 'food_price' => $row['food_price']);
 			$arr[] = $data;
 		}
-		//var_dump($arr);
-		if ($result->num_rows > 0) {
-			$stmt->close();
-			$conn->close();
-			return $arr;
-		}
-		else{
-			$stmt->close();
-			$conn->close();
-			return $arr;
-		}
+
+		$stmt->close();
+		$conn->close();
+		return $arr;
+		
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -225,10 +196,10 @@
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	function insertCustomerLocation($address, $pobox, $phone){
+	function insertCustomerLocation($address, $pobox, $phone, $userid){
 		$conn = getConnection();
-		$stmt = $conn->prepare("INSERT INTO customerlocation (address, pobox, phone) VALUES (?, ?, ?)");
-		$stmt->bind_param("sss", $address, $pobox, $phone);
+		$stmt = $conn->prepare("INSERT INTO customerlocation (address, pobox, phone, user_id) VALUES (?, ?, ?, ?)");
+		$stmt->bind_param("ssss", $address, $pobox, $phone, $userid);
 
 		$stmt->execute();
 
@@ -243,6 +214,28 @@
 		$stmt->bind_param("si",$username,$id);
 		$username = $_POST['uName'];
 		$stmt->execute();
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	function checkUsername($username){
+		$conn = getConnection();
+		$stmt = $conn->prepare("SELECT * FROM registration WHERE username = ?");
+		$stmt->bind_param("s",$username);
+		$stmt->execute();
+		$result = $stmt->get_result();
+
+		if ($result->num_rows > 0) {
+			$stmt->close();
+			$conn->close();
+			return true;
+		}
+		else{
+			$stmt->close();
+			$conn->close();
+			return false;
+		}
+		
 	}
 
 ?>
